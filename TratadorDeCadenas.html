@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Programa para agregar comillas simples a un conjunto de numeros separados por comas</title>
+</head>
+<body>
+<textarea id="DataToAddQuotationMarks"></textarea>
+<p id="output"></p>
+<script type="text/javascript">
+	
+var bigString = "74341	,	\
+76396	,	\
+74342	,	\
+76302	,	\
+76304	,	\
+76287	,	\
+70806	,	\
+76357	,	\
+76311	,	\
+76312	,	\
+76313	,	\
+76369	,	\
+76315	,	\
+74343	,	\
+76317	,	\
+76401	,	\
+76318	,	\
+76322	,	\
+76376	,	\
+76404	,	\
+76379	,	\
+76380	,	\
+76383	,	\
+76384	,	\
+76388	,	\
+74344	,	\
+76392	,	\
+76336	,	\
+76410	,	\
+76339	,	\
+76433";
+
+
+var arr = bigString.split(',');
+var arr2 = [];
+var text = '';
+
+for (var i = 0; i < arr.length; i++) {
+	arr2[i] = arr[i].trim();
+}
+
+for (var i = 0; i < arr2.length; i++) {
+	//text += "'" + arr2[i] + "',\n";
+	text += arr2[i] + ",\n";
+}
+
+text = text.substring(0, text.length - 2);
+
+document.getElementById('output').innerHTML = text;
+
+console.log(text);
+
+function DataToAddQuotationMarks(){
+	
+}
+
+</script>
+</body>
+</html>
