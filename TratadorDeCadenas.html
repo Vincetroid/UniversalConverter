@@ -3,17 +3,62 @@
 <head>
 	<title>Convertidor</title>
 	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		body{
+			background-color: AntiqueWhite;
+		}
 		#DataToAddQuotationMarks{
 		}
+		article.module-conversion{
+			margin-bottom: 50px;
+		}
 		.inputAndOutputData{
-			width: 300px;
-			height: 300px;
+			width: 95%;
+			height: 150px;
+		    display: block;
+		    margin-left: auto;
+		    margin-right: auto;
+		    padding: 4px;
+		    background: GhostWhite;
+		}
+		.input-data-section{
+			margin-bottom: 10px;
+		}
+		.outputData{
+			border: 1px solid rgb(169, 169, 169);
+			overflow-y: auto;
+			overflow-x: hidden;
+			font-family: consolas;
+    		font-size: 10pt;
+		}
+		.main-title{
+			font-size: 3em;
+			/*background-color: BlanchedAlmond*/
+		}
+		.title{
+			padding-left: 2.1%;
+		}
+		.gabriola-font{
+			font-family: Gabriola;
+		}
+		.center-text{
+			text-align: center;
+		}
+		.module-conversion{
+			margin: 20px 0px;
+		}
+		.inputOrOutputTitle{
+			margin-bottom: -8px;
 		}
 	</style>
+
 </head>
 <body>
-	convertir 
-		numeros
+	<!--convertir 
+		numeros o texto
 			orientacion vertical
 				separados por comas
 					*a orientacion horizontal
@@ -24,23 +69,65 @@
 					*agregar comas entre los elementos
 				con comas pero junto todo
 					*agregar un espacio entre los elementos
-		texto
-	<h1>Convertidor</h1>
-	<h2>Separar por comas </h2>
-	<h3>Convertir números de orientación vertical (con saltos de línea) a horizontal (renglones), ya sea que vengan con comas, espacios, </h3>
-		<textarea class="inputAndOutputData" id="DataToAddCommas" onpaste="AddCommas()"></textarea>
-	<h3>Convertir números de orientación vertical a renglones</h3>
-		<textarea class="inputAndOutputData" id="DataToAddCommas" onpaste="AddCommas()"></textarea>
-	<h3>Texto (añadir comillas simples)</h3>
-		<!--<textarea class="inputAndOutputData" id="DataWithCommas"></textarea>-->
-		<textarea class="inputData" id="DataToAddQuotationMarks"></textarea>
-	<p id="output"></p>
+		numeros o texto agregando comilla simple
+			orientacion vertical
+				separados por comas
+					*a orientacion horizontal
+					*agregar comilla simple
+				sin comas
+					*a orientacion horizontal agregando comas
+					*agregar comilla simple
+			orientacion horizontal
+				con espaciado
+					*agregar comas entre los elementos
+					*agregar comilla simple
+				con comas pero junto todo
+					*agregar un espacio entre los elementos
+					**agregar comilla simple
+Modulo de conversion
+
+
+-->
+	<header>
+		<h1 class="main-title center-text gabriola-font">Convertidor</h1>
+	</header>
+	<section class="wrapper-conversion">
+		<h2 class="center-text gabriola-font">Separar por comas</h2>
+		<article class="module-conversion">
+			<header class="title">
+				<h3 class="gabriola-font">Convertir numeros o texto</h3>
+			</header>
+			<div class="input-data-section">
+				<header class="title inputOrOutputTitle">
+					<h3 class="gabriola-font">Entrada</h3>
+				</header>
+				<textarea class="inputAndOutputData inputData" id="DataToAddCommas" onpaste="AddCommas()"></textarea>	
+			</div>
+			<div class="output-data-section">
+				<header class="title inputOrOutputTitle">
+					<h3 class="gabriola-font">Salida</h3>
+				</header>
+				<p id="outputWithCommas" class="inputAndOutputData outputData" contenteditable></p>
+			</div>
+		</article>
+		<article class="module-conversion">
+			<header class="title">
+				<h3 class="gabriola-font">Convertir numeros o texto agregando comillas simples</h3>
+			</header>
+			<div class="input-data-section">
+				<textarea class="inputAndOutputData inputData" id="DataToAddCommasAndQuotationMarks" onpaste="AddCommas()"></textarea>
+			</div>
+			<div class="output-data-section">
+				<p id="outputWithCommasAndSingleQuotes" class="inputAndOutputData outputData" contenteditable="true"></p>
+			</div>
+		</article>
+	</section>
 
 <script type="text/javascript">
 	
 function AddCommas(){
 
-	document.getElementById('output').innerHTML = '';
+	//document.getElementById('output').innerHTML = '';
 
 	setTimeout(function(){
 
@@ -55,14 +142,13 @@ function AddCommas(){
 		}
 
 		for (var i = 0; i < arr2.length; i++) {
-			text += "'" + arr2[i] + "',\n";
-			//text += arr2[i] + ",\n";
+			//text += "'" + arr2[i] + "',\n";
+			text += arr2[i] + ",\n";
 		}
 
 		text = text.substring(0, text.length - 2);
 
-		document.getElementById('DataWithCommas').innerHTML = text;
-		document.getElementById('output').innerHTML = text;
+		document.getElementById('outputWithCommas').innerHTML = text;
 
 		console.log(text);
 
